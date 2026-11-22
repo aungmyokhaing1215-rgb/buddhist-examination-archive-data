@@ -1,0 +1,1 @@
+npm install --registry=https://npmmirror.com --loglevel verbose

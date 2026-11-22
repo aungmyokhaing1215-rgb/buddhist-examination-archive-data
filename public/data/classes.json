@@ -1,0 +1,7 @@
+[
+  { "id": "primary", "name": "မူလတန်း", "slug": "primary", "order": 1, "status": "active" },
+  { "id": "first-level", "name": "ပထမယ်တန်း", "slug": "first-level", "order": 2, "status": "active" },
+  { "id": "first-middle", "name": "ပထမလတ်တန်း", "slug": "first-middle", "order": 3, "status": "active" },
+  { "id": "first-high", "name": "ပထမကြီးတန်း", "slug": "first-high", "order": 4, "status": "active" },
+  { "id": "dhammacariya", "name": "ဓမ္မစရိယတန်း", "slug": "dhammacariya", "order": 5, "status": "active" }
+]

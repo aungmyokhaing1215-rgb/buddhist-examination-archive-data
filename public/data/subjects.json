@@ -30,5 +30,13 @@
     "slug": "subject-4945fdd370",
     "order": 4,
     "status": "active"
+  },
+  {
+    "id": "primary-subject-8f231b5241",
+    "classId": "primary",
+    "name": "ဓာတုကထာ - ညဝါ",
+    "slug": "subject-8f231b5241",
+    "order": 5,
+    "status": "active"
   }
 ]

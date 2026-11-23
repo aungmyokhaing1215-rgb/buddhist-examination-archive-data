@@ -22,5 +22,13 @@
     "slug": "subject-c1853b6219",
     "order": 3,
     "status": "active"
+  },
+  {
+    "id": "primary-subject-4945fdd370",
+    "classId": "primary",
+    "name": "ဇာတက - ဇာတ်တော်",
+    "slug": "subject-4945fdd370",
+    "order": 4,
+    "status": "active"
   }
 ]

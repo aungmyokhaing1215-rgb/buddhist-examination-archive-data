@@ -62,5 +62,13 @@
     "slug": "subject-88614e58a7",
     "order": 2,
     "status": "active"
+  },
+  {
+    "id": "dhammacariya-subject-29d05876e7",
+    "classId": "dhammacariya",
+    "name": "သီလက္ခန် - ပါဠိတော် - ပထမနေ့",
+    "slug": "subject-29d05876e7",
+    "order": 3,
+    "status": "active"
   }
 ]

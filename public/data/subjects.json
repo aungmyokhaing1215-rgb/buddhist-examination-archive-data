@@ -110,5 +110,13 @@
     "slug": "subject-6453ec6062",
     "order": 2,
     "status": "active"
+  },
+  {
+    "id": "first-level-subject-392a916f90",
+    "classId": "first-level",
+    "name": "အဘိဓမ္မတ္ထသင်္ဂဟ",
+    "slug": "subject-392a916f90",
+    "order": 3,
+    "status": "active"
   }
 ]

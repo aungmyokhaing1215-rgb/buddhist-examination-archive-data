@@ -38,5 +38,13 @@
     "slug": "subject-8f231b5241",
     "order": 5,
     "status": "active"
+  },
+  {
+    "id": "primary-subject-984a9c1a55",
+    "classId": "primary",
+    "name": "ဓမ္မပဒ",
+    "slug": "subject-984a9c1a55",
+    "order": 6,
+    "status": "active"
   }
 ]

@@ -134,5 +134,13 @@
     "slug": "subject-aea6433235",
     "order": 5,
     "status": "active"
+  },
+  {
+    "id": "first-level-subject-984a9c1a55",
+    "classId": "first-level",
+    "name": "ဓမ္မပဒ",
+    "slug": "subject-984a9c1a55",
+    "order": 6,
+    "status": "active"
   }
 ]

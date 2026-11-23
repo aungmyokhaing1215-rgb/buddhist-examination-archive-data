@@ -94,5 +94,13 @@
     "slug": "subject-a20eec2985",
     "order": 6,
     "status": "active"
+  },
+  {
+    "id": "first-level-subject-bf38159ae3",
+    "classId": "first-level",
+    "name": "ဝိနယ - ဒွေမာတိကာ - ဝိနည်း",
+    "slug": "subject-bf38159ae3",
+    "order": 1,
+    "status": "active"
   }
 ]

@@ -70,5 +70,13 @@
     "slug": "subject-29d05876e7",
     "order": 3,
     "status": "active"
+  },
+  {
+    "id": "dhammacariya-subject-a1c73d5555",
+    "classId": "dhammacariya",
+    "name": "သီလက္ခန် - အဋ္ဌကထာ - ဒုတိယနေ့",
+    "slug": "subject-a1c73d5555",
+    "order": 4,
+    "status": "active"
   }
 ]

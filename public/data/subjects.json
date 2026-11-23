@@ -1,1 +1,146 @@
-[]
+[
+  {
+    "id": "primary-subject-bf38159ae3",
+    "classId": "primary",
+    "name": "ဝိနယ - ဒွေမာတိကာ - ဝိနည်း",
+    "slug": "subject-bf38159ae3",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "id": "primary-subject-6453ec6062",
+    "classId": "primary",
+    "name": "ကစ္စည်းသဒ္ဒါကြီး",
+    "slug": "subject-6453ec6062",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "id": "primary-subject-c1853b6219",
+    "classId": "primary",
+    "name": "အဘိဓမ္မာ-သင်္ဂြိုလ်",
+    "slug": "subject-c1853b6219",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "id": "primary-subject-4945fdd370",
+    "classId": "primary",
+    "name": "ဇာတက - ဇာတ်တော်",
+    "slug": "subject-4945fdd370",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "id": "primary-subject-8f231b5241",
+    "classId": "primary",
+    "name": "ဓာတုကထာ - ညဝါ",
+    "slug": "subject-8f231b5241",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "id": "primary-subject-984a9c1a55",
+    "classId": "primary",
+    "name": "ဓမ္မပဒ",
+    "slug": "subject-984a9c1a55",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "id": "dhammacariya-subject-3462cab07e",
+    "classId": "dhammacariya",
+    "name": "ပါရာဇိကဏ် - ပါဠိတော် - ပထမနေ့",
+    "slug": "subject-3462cab07e",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "id": "dhammacariya-subject-88614e58a7",
+    "classId": "dhammacariya",
+    "name": "ပါရာဇိကဏ် - အဋ္ဌကထာ - ဒုတိယနေ့",
+    "slug": "subject-88614e58a7",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "id": "dhammacariya-subject-29d05876e7",
+    "classId": "dhammacariya",
+    "name": "သီလက္ခန် - ပါဠိတော် - ပထမနေ့",
+    "slug": "subject-29d05876e7",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "id": "dhammacariya-subject-a1c73d5555",
+    "classId": "dhammacariya",
+    "name": "သီလက္ခန် - အဋ္ဌကထာ - ဒုတိယနေ့",
+    "slug": "subject-a1c73d5555",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "id": "dhammacariya-subject-4d95c6291b",
+    "classId": "dhammacariya",
+    "name": "ဓမ္မသင်္ဂဏီ - ပါဠိတော် - ပထမနေ့",
+    "slug": "subject-4d95c6291b",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "id": "dhammacariya-subject-a20eec2985",
+    "classId": "dhammacariya",
+    "name": "ဓမ္မသင်္ဂဏီ - အဋ္ဌကထာ - ဒုတိယနေ့",
+    "slug": "subject-a20eec2985",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "id": "first-level-subject-bf38159ae3",
+    "classId": "first-level",
+    "name": "ဝိနယ - ဒွေမာတိကာ - ဝိနည်း",
+    "slug": "subject-bf38159ae3",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "id": "first-level-subject-6453ec6062",
+    "classId": "first-level",
+    "name": "ကစ္စည်းသဒ္ဒါကြီး",
+    "slug": "subject-6453ec6062",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "id": "first-level-subject-392a916f90",
+    "classId": "first-level",
+    "name": "အဘိဓမ္မတ္ထသင်္ဂဟ",
+    "slug": "subject-392a916f90",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "id": "first-level-subject-c503743f83",
+    "classId": "first-level",
+    "name": "ဇာတက",
+    "slug": "subject-c503743f83",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "id": "first-level-subject-aea6433235",
+    "classId": "first-level",
+    "name": "ညဝါ - ဓာတုကထာ",
+    "slug": "subject-aea6433235",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "id": "first-level-subject-984a9c1a55",
+    "classId": "first-level",
+    "name": "ဓမ္မပဒ",
+    "slug": "subject-984a9c1a55",
+    "order": 6,
+    "status": "active"
+  }
+]

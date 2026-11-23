@@ -102,5 +102,13 @@
     "slug": "subject-bf38159ae3",
     "order": 1,
     "status": "active"
+  },
+  {
+    "id": "first-level-subject-6453ec6062",
+    "classId": "first-level",
+    "name": "ကစ္စည်းသဒ္ဒါကြီး",
+    "slug": "subject-6453ec6062",
+    "order": 2,
+    "status": "active"
   }
 ]

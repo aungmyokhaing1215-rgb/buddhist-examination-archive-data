@@ -126,5 +126,13 @@
     "slug": "subject-c503743f83",
     "order": 4,
     "status": "active"
+  },
+  {
+    "id": "first-level-subject-aea6433235",
+    "classId": "first-level",
+    "name": "ညဝါ - ဓာတုကထာ",
+    "slug": "subject-aea6433235",
+    "order": 5,
+    "status": "active"
   }
 ]

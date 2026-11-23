@@ -6,5 +6,13 @@
     "slug": "subject-bf38159ae3",
     "order": 1,
     "status": "active"
+  },
+  {
+    "id": "primary-subject-6453ec6062",
+    "classId": "primary",
+    "name": "ကစ္စည်းသဒ္ဒါကြီး",
+    "slug": "subject-6453ec6062",
+    "order": 2,
+    "status": "active"
   }
 ]

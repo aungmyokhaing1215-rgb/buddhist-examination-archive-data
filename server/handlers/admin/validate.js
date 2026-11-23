@@ -1,6 +1,6 @@
-import { isAdmin } from '../_lib/auth.js'
-import { calculateAndValidateExam } from '../_lib/data.js'
-import { send, method, body } from '../_lib/http.js'
+import { isAdmin } from '../../_lib/auth.js'
+import { calculateAndValidateExam } from '../../_lib/data.js'
+import { send, method, body } from '../../_lib/http.js'
 
 const core = ['primary', 'first-level', 'first-middle', 'first-high', 'dhammacariya']
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/

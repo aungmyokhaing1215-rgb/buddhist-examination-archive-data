@@ -2,12 +2,13 @@ import test, { beforeEach } from 'node:test'
 import assert from 'node:assert/strict'
 import { scryptSync, randomBytes } from 'node:crypto'
 import { readFileSync } from 'node:fs'
-import { calculateAndValidateExam, examPath } from '../api/_lib/data.js'
-import { deleteJson, readJson, writeJson } from '../api/_lib/github.js'
-import { isAdmin, login, requireCsrf, sessionInfo } from '../api/_lib/auth.js'
-import { issueSession } from '../api/_lib/auth.js'
-import publicSearch from '../api/public/search.js'
-import adminSearch from '../api/admin/search.js'
+import { calculateAndValidateExam, examPath } from '../server/_lib/data.js'
+import { deleteJson, readJson, writeJson } from '../server/_lib/github.js'
+import { isAdmin, login, requireCsrf, sessionInfo } from '../server/_lib/auth.js'
+import { issueSession } from '../server/_lib/auth.js'
+import publicSearch from '../server/handlers/public/search.js'
+import adminSearch from '../server/handlers/admin/search.js'
+import apiDispatcher from '../api/index.js'
 
 const validExam = () => ({
   id: 'primary-2025-burmese', classId: 'primary', year: 2025, subjectId: 'burmese',
@@ -37,6 +38,24 @@ beforeEach(() => {
   process.env.GITHUB_REPO = 'archive-data'
   process.env.GITHUB_BRANCH = 'main'
   process.env.GITHUB_DATA_PATH = 'public/data'
+})
+
+test('single Vercel API dispatcher preserves public paths and returns 404 for unknown routes', async () => {
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = async () => mockResponse(404, { message: 'Not found' })
+  async function dispatch(query, url = '') {
+    const res = { setHeader() { return this }, status(code) { this.statusCode = code; return this }, end(body) { this.body = body } }
+    await apiDispatcher({ method: 'GET', query, url }, res)
+    return { status: res.statusCode, data: JSON.parse(res.body) }
+  }
+  try {
+    const catalog = await dispatch({ route: ['public', 'catalog'] })
+    assert.equal(catalog.status, 200)
+    assert.equal(catalog.data.classes.length, 5)
+    assert.equal((await dispatch({ path: 'public/catalog' })).status, 200)
+    assert.equal((await dispatch({ route: ['missing', 'path'] })).status, 404)
+    assert.equal((await dispatch({}, '/api/public/catalog?x=1')).status, 200)
+  } finally { globalThis.fetch = originalFetch }
 })
 
 test('exam validation calculates section and total marks and preserves Unicode HTML', () => {

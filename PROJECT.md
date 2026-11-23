@@ -9,7 +9,7 @@ The repository currently contains the five required class records, but `public/d
 ## Architecture
 
 - **Client:** React 18, Vite, JavaScript, React Router, Tailwind CSS v4, Axios, CKEditor 5 Classic, DOMPurify, Lucide icons.
-- **Server:** Vercel serverless functions in `api/`; Node.js crypto and `jose` implement password verification and signed sessions.
+- **Server:** One Vercel serverless function at `api/index.js` receives rewrites for `/api/*` and dispatches to endpoint handlers under `server/handlers/`; shared Node.js crypto, `jose`, GitHub, and validation helpers live under `server/_lib/`.
 - **Storage:** GitHub REST API. Catalog and published data live in the configured data root (default `public/data`); drafts live in the repository-root `drafts/` folder.
 - **Deployment:** Vercel builds the Vite site and deploys API handlers. A publish writes JSON commits to the configured GitHub branch, which can trigger the connected Vercel deployment.
 - **No database:** JSON files are the only archive storage format.
@@ -26,9 +26,11 @@ The repository currently contains the five required class records, but `public/d
 
 ```text
 api/
+  index.js              Single Vercel Function dispatching rewritten /api/* endpoint paths
+server/
   _lib/                 Auth, GitHub JSON access, validation/indexing, HTTP helpers
-  admin/                Login/session, dashboard, catalog, exam, search, import/export, publish APIs
-  public/               Catalog, examination, index and search APIs
+  handlers/admin/       Login/session, dashboard, catalog, exam, search, import/export, publish handlers
+  handlers/public/      Catalog, examination, index and search handlers
 public/
   data/
     classes.json        Five required class records
@@ -47,7 +49,7 @@ scripts/                Admin password hash utility
 tests/                  Node built-in tests
 ```
 
-Other root configuration includes `vite.config.js`, `vercel.json`, `.env.example`, `package.json`, and `package-lock.json`. The project does not currently have dedicated hooks, utilities, or validation directories; server validation is in `api/_lib/data.js`.
+Other root configuration includes `vite.config.js`, `vercel.json`, `.env.example`, `package.json`, and `package-lock.json`. The project does not currently have dedicated hooks, utilities, or validation directories; server validation is in `server/_lib/data.js`.
 
 ## JSON data contract
 
@@ -93,7 +95,7 @@ The homepage can show the configured year range even if empty. Class year select
 
 ## API reference
 
-All endpoints are Vercel serverless functions. Unless stated otherwise, JSON errors include an `error` message. Every admin endpoint requires an authenticated session; mutations additionally require CSRF validation, except login and the read-only validation preview.
+The single Vercel catch-all function dispatches the endpoint paths below to server-side handlers. Unless stated otherwise, JSON errors include an `error` message. Every admin endpoint requires an authenticated session; mutations additionally require CSRF validation, except login and the read-only validation preview.
 
 | Method and path | Purpose |
 | --- | --- |
@@ -176,7 +178,7 @@ Tests use structural/synthetic fixtures only; no mock questions are stored as ar
 4. Ensure the Vercel integration watches the same branch configured by `GITHUB_BRANCH` so committed archive changes trigger deployment.
 5. Verify API routes and SPA deep links on a Preview deployment before directing users to Production.
 
-`vercel.json` sets the serverless function max duration to 30 seconds and rewrites SPA paths to `/index.html`. See [Vercel rewrites](https://vercel.com/docs/routing/rewrites) and [function duration](https://vercel.com/docs/functions/configuring-functions/duration).
+`vercel.json` rewrites `/api/*` to the single `api/index.js` function and sets its max duration to 30 seconds; other SPA paths rewrite to `/index.html`. Keeping one file under `api/` avoids the Hobby plan's per-deployment serverless function count limit while preserving the application endpoint URLs. See [Vercel rewrites](https://vercel.com/docs/routing/rewrites) and [function duration](https://vercel.com/docs/functions/configuring-functions/duration).
 
 ## Backup, restore and operational limitations
 

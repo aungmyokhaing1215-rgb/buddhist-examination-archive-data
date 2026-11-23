@@ -1,7 +1,7 @@
-import {isAdmin,requireCsrf} from '../_lib/auth.js'
-import {readJson,writeJson,deleteJson,treeFiles} from '../_lib/github.js'
-import {readSource,calculateAndValidateExam,toIndexEntry} from '../_lib/data.js'
-import {send,method,body,fail} from '../_lib/http.js'
+import {isAdmin,requireCsrf} from '../../_lib/auth.js'
+import {readJson,writeJson,deleteJson,treeFiles} from '../../_lib/github.js'
+import {readSource,calculateAndValidateExam,toIndexEntry} from '../../_lib/data.js'
+import {send,method,body,fail} from '../../_lib/http.js'
 
 const classSlugs=['primary','first-level','first-middle','first-high','dhammacariya']
 function lookup(path,prefix,classes,subjects){const re=new RegExp(`^${prefix}/([^/]+)/(20\\d\\d)/([a-z0-9-]+)\\.json$`),match=path.match(re);if(!match)throw Error('Invalid examination JSON path');const[,slug,year,subjectSlug]=match,cls=classes.find(c=>c.slug===slug),subject=subjects.find(s=>s.classId===cls?.id&&s.slug===subjectSlug);if(!cls||!subject)throw Error(`Unknown class or subject in ${path}`);return{cls,subject,year}}

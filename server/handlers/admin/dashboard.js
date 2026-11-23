@@ -1,7 +1,7 @@
-import { isAdmin } from '../_lib/auth.js'
-import { readSource } from '../_lib/data.js'
-import { readJson, treeFiles } from '../_lib/github.js'
-import { send, method, fail } from '../_lib/http.js'
+import { isAdmin } from '../../_lib/auth.js'
+import { readSource } from '../../_lib/data.js'
+import { readJson, treeFiles } from '../../_lib/github.js'
+import { send, method, fail } from '../../_lib/http.js'
 
 const countQuestions = (exam) => (exam.sections || []).reduce((total, section) => total + (section.questions || []).length, 0)
 export default async function handler(req, res) {

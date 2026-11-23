@@ -1,7 +1,7 @@
-import { isAdmin, requireCsrf } from '../_lib/auth.js'
-import { readJson, writeJson, deleteJson } from '../_lib/github.js'
-import { readSource, examPath, calculateAndValidateExam, updateIndex } from '../_lib/data.js'
-import { send, method, body, fail } from '../_lib/http.js'
+import { isAdmin, requireCsrf } from '../../_lib/auth.js'
+import { readJson, writeJson, deleteJson } from '../../_lib/github.js'
+import { readSource, examPath, calculateAndValidateExam, updateIndex } from '../../_lib/data.js'
+import { send, method, body, fail } from '../../_lib/http.js'
 
 async function reference(classSlug, year, subjectId) {
   const [classes, subjects] = await Promise.all([readSource('classes'), readSource('subjects')])

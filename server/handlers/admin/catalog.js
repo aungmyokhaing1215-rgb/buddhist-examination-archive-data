@@ -1,7 +1,7 @@
-import { isAdmin, requireCsrf } from '../_lib/auth.js'
-import { readSource } from '../_lib/data.js'
-import { writeJson } from '../_lib/github.js'
-import { send, method, body, fail } from '../_lib/http.js'
+import { isAdmin, requireCsrf } from '../../_lib/auth.js'
+import { readSource } from '../../_lib/data.js'
+import { writeJson } from '../../_lib/github.js'
+import { send, method, body, fail } from '../../_lib/http.js'
 
 const requiredClasses = ['primary', 'first-level', 'first-middle', 'first-high', 'dhammacariya']
 const validSlug = (value) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value || '')

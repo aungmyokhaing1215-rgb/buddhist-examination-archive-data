@@ -1,7 +1,7 @@
-import { isAdmin } from '../_lib/auth.js'
-import { readSource } from '../_lib/data.js'
-import { readJson, treeFiles } from '../_lib/github.js'
-import { send, method, fail } from '../_lib/http.js'
+import { isAdmin } from '../../_lib/auth.js'
+import { readSource } from '../../_lib/data.js'
+import { readJson, treeFiles } from '../../_lib/github.js'
+import { send, method, fail } from '../../_lib/http.js'
 
 const text = (value) => String(value || '').normalize('NFC').toLocaleLowerCase()
 const plain = (value) => String(value || '').replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim()

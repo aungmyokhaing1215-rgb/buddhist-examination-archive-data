@@ -4,6 +4,7 @@ Project history is maintained from the implementation currently present in the r
 
 ## Current implementation
 
+- Consolidated all API paths behind one Vercel catch-all function so the deployment stays within the Hobby plan's serverless function count limit; endpoint URLs and handler logic remain in place.
 - Added a React/Vite public archive with class/year/subject browsing, examination display, global indexed search, About and not-found pages, and print styling.
 - Added the five required class records and JSON catalog/index/examination path conventions. No actual subjects or examinations are seeded.
 - Added manual examination, section, question, and answer entry using separate CKEditor 5 Classic instances. Examination content is stored as HTML strings in JSON.

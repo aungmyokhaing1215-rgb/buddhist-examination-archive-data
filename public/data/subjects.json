@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "id": "primary-subject-bf38159ae3",
+    "classId": "primary",
+    "name": "ဝိနယ - ဒွေမာတိကာ - ဝိနည်း",
+    "slug": "subject-bf38159ae3",
+    "order": 1,
+    "status": "active"
+  }
+]

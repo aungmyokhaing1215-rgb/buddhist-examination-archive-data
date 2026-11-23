@@ -118,5 +118,13 @@
     "slug": "subject-392a916f90",
     "order": 3,
     "status": "active"
+  },
+  {
+    "id": "first-level-subject-c503743f83",
+    "classId": "first-level",
+    "name": "ဇာတက",
+    "slug": "subject-c503743f83",
+    "order": 4,
+    "status": "active"
   }
 ]

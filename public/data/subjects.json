@@ -54,5 +54,13 @@
     "slug": "subject-3462cab07e",
     "order": 1,
     "status": "active"
+  },
+  {
+    "id": "dhammacariya-subject-88614e58a7",
+    "classId": "dhammacariya",
+    "name": "ပါရာဇိကဏ် - အဋ္ဌကထာ - ဒုတိယနေ့",
+    "slug": "subject-88614e58a7",
+    "order": 2,
+    "status": "active"
   }
 ]

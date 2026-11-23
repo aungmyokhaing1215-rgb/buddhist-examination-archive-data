@@ -14,5 +14,13 @@
     "slug": "subject-6453ec6062",
     "order": 2,
     "status": "active"
+  },
+  {
+    "id": "primary-subject-c1853b6219",
+    "classId": "primary",
+    "name": "အဘိဓမ္မာ-သင်္ဂြိုလ်",
+    "slug": "subject-c1853b6219",
+    "order": 3,
+    "status": "active"
   }
 ]

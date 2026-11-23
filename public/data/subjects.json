@@ -86,5 +86,13 @@
     "slug": "subject-4d95c6291b",
     "order": 5,
     "status": "active"
+  },
+  {
+    "id": "dhammacariya-subject-a20eec2985",
+    "classId": "dhammacariya",
+    "name": "ဓမ္မသင်္ဂဏီ - အဋ္ဌကထာ - ဒုတိယနေ့",
+    "slug": "subject-a20eec2985",
+    "order": 6,
+    "status": "active"
   }
 ]

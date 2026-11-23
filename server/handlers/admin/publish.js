@@ -22,13 +22,14 @@ export default async function handler(req, res) {
     const path = examPath(cls.slug, String(year), subject.slug)
     const draftPath = `drafts/${path.slice('exams/'.length)}`
     let draft = await readJson(draftPath, '')
-    if (!draft.data) draft = await readJson(path)
-    if (!draft.data) return send(res, 404, { status: 'validation_failed', error: 'Save an examination first' })
+    const previous = await readJson(path)
+    const sourceExam = Array.isArray(input.sections) ? input : draft.data || previous.data
+    if (!sourceExam) return send(res, 404, { status: 'validation_failed', error: 'No examination content was provided or saved' })
 
     let exam
     try {
       exam = calculateAndValidateExam({
-        ...draft.data,
+        ...sourceExam,
         id: `${cls.id}-${year}-${subject.slug}`,
         classId: cls.id,
         subjectId: subject.id,
@@ -39,7 +40,6 @@ export default async function handler(req, res) {
       return send(res, 400, { status: 'validation_failed', error: error.message })
     }
 
-    const previous = await readJson(path)
     const savedExam = await writeJson(path, exam, `Publish: ${cls.slug} ${year} ${subject.slug}`, previous.sha)
     examCommit = savedExam?.commit?.sha
     if (!examCommit) throw Error('GitHub did not confirm the examination commit')

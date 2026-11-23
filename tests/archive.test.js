@@ -58,6 +58,54 @@ test('single Vercel API dispatcher preserves public paths and returns 404 for un
   } finally { globalThis.fetch = originalFetch }
 })
 
+test('publishing sends the current unsaved editor content to GitHub and rebuilds the index', async () => {
+  process.env.SESSION_SECRET = 'test-session-secret-long-enough-for-unit-tests'
+  const { token, csrfToken } = await issueSession()
+  const classes = [{ id: 'primary', slug: 'primary', name: 'မူလတန်း', status: 'active' }]
+  const subjects = [{ id: 'primary-burmese', classId: 'primary', slug: 'burmese', name: 'မြန်မာစာ', status: 'active' }]
+  const writes = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = async (url, options = {}) => {
+    const target = String(url)
+    if (target.includes('/contents/public/data/classes.json')) return mockResponse(200, { content: Buffer.from(JSON.stringify(classes)).toString('base64'), sha: 'classes-sha' })
+    if (target.includes('/contents/public/data/subjects.json')) return mockResponse(200, { content: Buffer.from(JSON.stringify(subjects)).toString('base64'), sha: 'subjects-sha' })
+    if (target.includes('/contents/public/data/index.json') && options.method !== 'PUT') return mockResponse(200, { content: Buffer.from('[]').toString('base64'), sha: 'index-sha' })
+    if (target.includes('/contents/drafts/') || target.includes('/contents/public/data/exams/')) {
+      if (options.method === 'PUT') {
+        const request = JSON.parse(options.body)
+        writes.push({ path: target, json: JSON.parse(Buffer.from(request.content, 'base64').toString('utf8')) })
+        return mockResponse(200, { commit: { sha: `commit-${writes.length}` } })
+      }
+      return mockResponse(404, { message: 'Not found' })
+    }
+    if (target.includes('/contents/public/data/index.json') && options.method === 'PUT') {
+      const request = JSON.parse(options.body)
+      writes.push({ path: target, json: JSON.parse(Buffer.from(request.content, 'base64').toString('utf8')) })
+      return mockResponse(200, { commit: { sha: `commit-${writes.length}` } })
+    }
+    throw Error(`Unexpected mocked GitHub URL: ${target}`)
+  }
+  const exam = { ...validExam(), classId: 'primary', subjectId: 'primary-burmese', classSlug: 'primary', subjectName: 'မြန်မာစာ', title: 'Unsaved exam title' }
+  const req = {
+    method: 'POST', query: { path: 'admin/publish' }, body: exam,
+    headers: {
+      cookie: `archive_session=${token}`, origin: 'https://archive.test', host: 'archive.test',
+      'x-forwarded-host': 'archive.test', 'sec-fetch-site': 'same-origin', 'x-csrf-token': csrfToken,
+    },
+  }
+  const res = { setHeader() { return this }, status(code) { this.statusCode = code; return this }, end(body) { this.body = body } }
+  try {
+    await apiDispatcher(req, res)
+    assert.equal(res.statusCode, 200)
+    assert.equal(JSON.parse(res.body).status, 'published')
+    assert.match(writes[0].path, /exams\/primary\/2025\/burmese\.json/)
+    assert.equal(writes[0].json.title, 'Unsaved exam title')
+    assert.equal(writes[0].json.sections[0].questions[0].question, '<p>မေးခွန်း</p>')
+    assert.match(writes[1].path, /index\.json/)
+    assert.equal(writes[1].json[0].title, 'Unsaved exam title')
+  } finally { globalThis.fetch = originalFetch }
+})
+
 test('exam validation calculates section and total marks and preserves Unicode HTML', () => {
   const normalized = calculateAndValidateExam(validExam(), { classId: 'primary', subjectId: 'burmese', subjectName: 'မြန်မာစာ', year: 2025 })
   assert.equal(normalized.totalMarks, 10)

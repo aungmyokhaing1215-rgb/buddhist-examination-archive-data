@@ -53,7 +53,7 @@
     "name": "KG",
     "slug": "kg",
     "order": 8,
-    "status": "active"
+    "status": "inactive"
   },
   {
     "id": "g3",

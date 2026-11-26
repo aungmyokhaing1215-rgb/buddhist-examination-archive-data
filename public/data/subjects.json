@@ -286,5 +286,13 @@
     "slug": "subject-7b8603660a",
     "order": 3,
     "status": "active"
+  },
+  {
+    "id": "g2-subject-d4720580ac",
+    "classId": "g2",
+    "name": "သမိုင်း",
+    "slug": "subject-d4720580ac",
+    "order": 4,
+    "status": "active"
   }
 ]

@@ -206,5 +206,13 @@
     "slug": "subject-d4720580ac",
     "order": 7,
     "status": "active"
+  },
+  {
+    "id": "g1-subject-b26f431128",
+    "classId": "g1",
+    "name": "မြန်မာ",
+    "slug": "subject-b26f431128",
+    "order": 1,
+    "status": "active"
   }
 ]

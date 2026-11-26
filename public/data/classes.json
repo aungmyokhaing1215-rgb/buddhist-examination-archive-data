@@ -42,16 +42,16 @@
     "status": "active"
   },
   {
-    "id": "kg",
-    "name": "KG",
-    "slug": "kg",
+    "id": "g2",
+    "name": "G2",
+    "slug": "G2",
     "order": 7,
     "status": "active"
   },
   {
-    "id": "g2",
-    "name": "G2",
-    "slug": "G2",
+    "id": "kg",
+    "name": "KG",
+    "slug": "kg",
     "order": 8,
     "status": "active"
   },

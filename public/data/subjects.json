@@ -390,5 +390,13 @@
     "slug": "computer",
     "order": 8,
     "status": "active"
+  },
+  {
+    "id": "g5-subject-88e39f173c",
+    "classId": "g5",
+    "name": "လူမှူ့ရေး",
+    "slug": "subject-88e39f173c",
+    "order": 9,
+    "status": "active"
   }
 ]

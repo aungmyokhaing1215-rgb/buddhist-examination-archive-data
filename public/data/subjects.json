@@ -198,5 +198,13 @@
     "slug": "subject-5e1c26071d",
     "order": 6,
     "status": "active"
+  },
+  {
+    "id": "kg-subject-d4720580ac",
+    "classId": "kg",
+    "name": "သမိုင်း",
+    "slug": "subject-d4720580ac",
+    "order": 7,
+    "status": "active"
   }
 ]

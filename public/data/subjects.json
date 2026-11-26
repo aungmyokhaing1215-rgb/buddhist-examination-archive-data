@@ -334,5 +334,13 @@
     "slug": "subject-b26f431128",
     "order": 1,
     "status": "active"
+  },
+  {
+    "id": "g5-subject-7b8603660a",
+    "classId": "g5",
+    "name": "သင်္ချာ",
+    "slug": "subject-7b8603660a",
+    "order": 2,
+    "status": "active"
   }
 ]

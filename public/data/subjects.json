@@ -174,5 +174,13 @@
     "slug": "subject-85372a4908",
     "order": 3,
     "status": "active"
+  },
+  {
+    "id": "kg-subject-3a8be74d87",
+    "classId": "kg",
+    "name": "သိပ္ပံ",
+    "slug": "subject-3a8be74d87",
+    "order": 4,
+    "status": "active"
   }
 ]

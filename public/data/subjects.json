@@ -382,5 +382,13 @@
     "slug": "subject-06198f6912",
     "order": 7,
     "status": "active"
+  },
+  {
+    "id": "g5-computer",
+    "classId": "g5",
+    "name": "Computer",
+    "slug": "computer",
+    "order": 8,
+    "status": "active"
   }
 ]

@@ -294,5 +294,13 @@
     "slug": "subject-d4720580ac",
     "order": 4,
     "status": "active"
+  },
+  {
+    "id": "g2-subject-85372a4908",
+    "classId": "g2",
+    "name": "ပထဝီ",
+    "slug": "subject-85372a4908",
+    "order": 5,
+    "status": "active"
   }
 ]

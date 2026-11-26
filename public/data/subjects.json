@@ -318,5 +318,13 @@
     "slug": "subject-06198f6912",
     "order": 7,
     "status": "active"
+  },
+  {
+    "id": "g2-computer",
+    "classId": "g2",
+    "name": "computer",
+    "slug": "computer",
+    "order": 8,
+    "status": "active"
   }
 ]

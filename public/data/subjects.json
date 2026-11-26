@@ -262,5 +262,13 @@
     "slug": "subject-06198f6912",
     "order": 7,
     "status": "active"
+  },
+  {
+    "id": "g2-subject-b26f431128",
+    "classId": "g2",
+    "name": "မြန်မာ",
+    "slug": "subject-b26f431128",
+    "order": 1,
+    "status": "active"
   }
 ]

@@ -150,5 +150,13 @@
     "slug": "subject-b26f431128",
     "order": 7,
     "status": "active"
+  },
+  {
+    "id": "kg-subject-b26f431128",
+    "classId": "kg",
+    "name": "မြန်မာ",
+    "slug": "subject-b26f431128",
+    "order": 1,
+    "status": "active"
   }
 ]

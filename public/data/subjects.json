@@ -270,5 +270,13 @@
     "slug": "subject-b26f431128",
     "order": 1,
     "status": "active"
+  },
+  {
+    "id": "g2-subject-c0a813fbf6",
+    "classId": "g2",
+    "name": "အင်္ဂလိပ်",
+    "slug": "subject-c0a813fbf6",
+    "order": 2,
+    "status": "active"
   }
 ]

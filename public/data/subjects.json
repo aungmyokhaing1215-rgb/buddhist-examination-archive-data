@@ -190,5 +190,13 @@
     "slug": "subject-7b8603660a",
     "order": 5,
     "status": "active"
+  },
+  {
+    "id": "kg-subject-5e1c26071d",
+    "classId": "kg",
+    "name": "လူမူ့ရေး",
+    "slug": "subject-5e1c26071d",
+    "order": 6,
+    "status": "active"
   }
 ]

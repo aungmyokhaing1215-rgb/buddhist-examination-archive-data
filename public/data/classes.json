@@ -67,7 +67,7 @@
     "name": "G4",
     "slug": "G4",
     "order": 10,
-    "status": "active"
+    "status": "inactive"
   },
   {
     "id": "g5",

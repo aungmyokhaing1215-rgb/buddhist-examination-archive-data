@@ -342,5 +342,13 @@
     "slug": "subject-7b8603660a",
     "order": 2,
     "status": "active"
+  },
+  {
+    "id": "g5-subject-e42269a5a0",
+    "classId": "g5",
+    "name": "အင်္",
+    "slug": "subject-e42269a5a0",
+    "order": 3,
+    "status": "active"
   }
 ]

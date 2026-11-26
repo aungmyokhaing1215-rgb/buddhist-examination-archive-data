@@ -166,5 +166,13 @@
     "slug": "english",
     "order": 2,
     "status": "active"
+  },
+  {
+    "id": "kg-subject-85372a4908",
+    "classId": "kg",
+    "name": "ပထဝီ",
+    "slug": "subject-85372a4908",
+    "order": 3,
+    "status": "active"
   }
 ]

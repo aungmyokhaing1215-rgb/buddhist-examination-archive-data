@@ -310,5 +310,13 @@
     "slug": "subject-88e39f173c",
     "order": 6,
     "status": "active"
+  },
+  {
+    "id": "g2-subject-06198f6912",
+    "classId": "g2",
+    "name": "ဂီတ",
+    "slug": "subject-06198f6912",
+    "order": 7,
+    "status": "active"
   }
 ]

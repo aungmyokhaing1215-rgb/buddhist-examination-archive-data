@@ -278,5 +278,13 @@
     "slug": "subject-c0a813fbf6",
     "order": 2,
     "status": "active"
+  },
+  {
+    "id": "g2-subject-7b8603660a",
+    "classId": "g2",
+    "name": "သင်္ချာ",
+    "slug": "subject-7b8603660a",
+    "order": 3,
+    "status": "active"
   }
 ]

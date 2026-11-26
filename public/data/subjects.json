@@ -358,5 +358,13 @@
     "slug": "subject-c0a813fbf6",
     "order": 4,
     "status": "active"
+  },
+  {
+    "id": "g5-subject-85372a4908",
+    "classId": "g5",
+    "name": "ပထဝီ",
+    "slug": "subject-85372a4908",
+    "order": 5,
+    "status": "active"
   }
 ]

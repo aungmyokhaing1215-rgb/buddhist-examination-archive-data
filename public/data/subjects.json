@@ -158,5 +158,13 @@
     "slug": "subject-b26f431128",
     "order": 1,
     "status": "active"
+  },
+  {
+    "id": "kg-english",
+    "classId": "kg",
+    "name": "English",
+    "slug": "english",
+    "order": 2,
+    "status": "active"
   }
 ]

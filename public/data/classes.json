@@ -39,7 +39,7 @@
     "name": "G1",
     "slug": "G1",
     "order": 6,
-    "status": "active"
+    "status": "inactive"
   },
   {
     "id": "g2",

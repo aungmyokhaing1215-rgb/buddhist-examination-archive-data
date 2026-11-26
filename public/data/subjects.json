@@ -142,5 +142,189 @@
     "slug": "subject-984a9c1a55",
     "order": 6,
     "status": "active"
+  },
+  {
+    "id": "primary-subject-b26f431128",
+    "classId": "primary",
+    "name": "မြန်မာ",
+    "slug": "subject-b26f431128",
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "id": "kg-subject-b26f431128",
+    "classId": "kg",
+    "name": "မြန်မာ",
+    "slug": "subject-b26f431128",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "id": "kg-english",
+    "classId": "kg",
+    "name": "English",
+    "slug": "english",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "id": "kg-subject-85372a4908",
+    "classId": "kg",
+    "name": "ပထဝီ",
+    "slug": "subject-85372a4908",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "id": "kg-subject-3a8be74d87",
+    "classId": "kg",
+    "name": "သိပ္ပံ",
+    "slug": "subject-3a8be74d87",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "id": "kg-subject-7b8603660a",
+    "classId": "kg",
+    "name": "သင်္ချာ",
+    "slug": "subject-7b8603660a",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "id": "kg-subject-5e1c26071d",
+    "classId": "kg",
+    "name": "လူမူ့ရေး",
+    "slug": "subject-5e1c26071d",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "id": "kg-subject-d4720580ac",
+    "classId": "kg",
+    "name": "သမိုင်း",
+    "slug": "subject-d4720580ac",
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "id": "g1-subject-b26f431128",
+    "classId": "g1",
+    "name": "မြန်မာ",
+    "slug": "subject-b26f431128",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "id": "g1-subject-c0a813fbf6",
+    "classId": "g1",
+    "name": "အင်္ဂလိပ်",
+    "slug": "subject-c0a813fbf6",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "id": "g1-subject-7b8603660a",
+    "classId": "g1",
+    "name": "သင်္ချာ",
+    "slug": "subject-7b8603660a",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "id": "g1-subject-85372a4908",
+    "classId": "g1",
+    "name": "ပထဝီ",
+    "slug": "subject-85372a4908",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "id": "g1-subject-d4720580ac",
+    "classId": "g1",
+    "name": "သမိုင်း",
+    "slug": "subject-d4720580ac",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "id": "g1-subject-1499e7b1ba",
+    "classId": "g1",
+    "name": "လူ့မှူ့ရေးး",
+    "slug": "subject-1499e7b1ba",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "id": "g1-subject-06198f6912",
+    "classId": "g1",
+    "name": "ဂီတ",
+    "slug": "subject-06198f6912",
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "id": "g2-subject-b26f431128",
+    "classId": "g2",
+    "name": "မြန်မာ",
+    "slug": "subject-b26f431128",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "id": "g2-subject-c0a813fbf6",
+    "classId": "g2",
+    "name": "အင်္ဂလိပ်",
+    "slug": "subject-c0a813fbf6",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "id": "g2-subject-7b8603660a",
+    "classId": "g2",
+    "name": "သင်္ချာ",
+    "slug": "subject-7b8603660a",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "id": "g2-subject-d4720580ac",
+    "classId": "g2",
+    "name": "သမိုင်း",
+    "slug": "subject-d4720580ac",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "id": "g2-subject-85372a4908",
+    "classId": "g2",
+    "name": "ပထဝီ",
+    "slug": "subject-85372a4908",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "id": "g2-subject-88e39f173c",
+    "classId": "g2",
+    "name": "လူမှူ့ရေး",
+    "slug": "subject-88e39f173c",
+    "order": 6,
+    "status": "active"
+  },
+  {
+    "id": "g2-subject-06198f6912",
+    "classId": "g2",
+    "name": "ဂီတ",
+    "slug": "subject-06198f6912",
+    "order": 7,
+    "status": "active"
+  },
+  {
+    "id": "g2-computer",
+    "classId": "g2",
+    "name": "computer",
+    "slug": "computer",
+    "order": 8,
+    "status": "active"
   }
 ]

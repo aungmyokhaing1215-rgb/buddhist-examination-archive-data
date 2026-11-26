@@ -344,19 +344,11 @@
     "status": "active"
   },
   {
-    "id": "g5-subject-e42269a5a0",
-    "classId": "g5",
-    "name": "အင်္",
-    "slug": "subject-e42269a5a0",
-    "order": 3,
-    "status": "active"
-  },
-  {
     "id": "g5-subject-c0a813fbf6",
     "classId": "g5",
     "name": "အင်္ဂလိပ်",
     "slug": "subject-c0a813fbf6",
-    "order": 4,
+    "order": 3,
     "status": "active"
   },
   {
@@ -364,7 +356,7 @@
     "classId": "g5",
     "name": "ပထဝီ",
     "slug": "subject-85372a4908",
-    "order": 5,
+    "order": 4,
     "status": "active"
   },
   {
@@ -372,7 +364,7 @@
     "classId": "g5",
     "name": "သမိုင်း",
     "slug": "subject-d4720580ac",
-    "order": 6,
+    "order": 5,
     "status": "active"
   },
   {
@@ -380,7 +372,7 @@
     "classId": "g5",
     "name": "ဂီတ",
     "slug": "subject-06198f6912",
-    "order": 7,
+    "order": 6,
     "status": "active"
   },
   {
@@ -388,7 +380,7 @@
     "classId": "g5",
     "name": "Computer",
     "slug": "computer",
-    "order": 8,
+    "order": 7,
     "status": "active"
   },
   {
@@ -396,7 +388,7 @@
     "classId": "g5",
     "name": "လူမှူ့ရေး",
     "slug": "subject-88e39f173c",
-    "order": 9,
+    "order": 8,
     "status": "active"
   }
 ]

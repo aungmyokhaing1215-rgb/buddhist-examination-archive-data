@@ -326,5 +326,13 @@
     "slug": "computer",
     "order": 8,
     "status": "active"
+  },
+  {
+    "id": "g5-subject-b26f431128",
+    "classId": "g5",
+    "name": "မြန်မာ",
+    "slug": "subject-b26f431128",
+    "order": 1,
+    "status": "active"
   }
 ]

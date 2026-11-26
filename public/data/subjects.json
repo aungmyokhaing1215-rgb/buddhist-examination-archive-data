@@ -182,5 +182,13 @@
     "slug": "subject-3a8be74d87",
     "order": 4,
     "status": "active"
+  },
+  {
+    "id": "kg-subject-7b8603660a",
+    "classId": "kg",
+    "name": "သင်္ချာ",
+    "slug": "subject-7b8603660a",
+    "order": 5,
+    "status": "active"
   }
 ]

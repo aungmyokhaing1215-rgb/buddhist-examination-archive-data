@@ -366,5 +366,13 @@
     "slug": "subject-85372a4908",
     "order": 5,
     "status": "active"
+  },
+  {
+    "id": "g5-subject-d4720580ac",
+    "classId": "g5",
+    "name": "သမိုင်း",
+    "slug": "subject-d4720580ac",
+    "order": 6,
+    "status": "active"
   }
 ]

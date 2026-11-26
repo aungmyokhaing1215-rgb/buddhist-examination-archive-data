@@ -302,5 +302,13 @@
     "slug": "subject-85372a4908",
     "order": 5,
     "status": "active"
+  },
+  {
+    "id": "g2-subject-88e39f173c",
+    "classId": "g2",
+    "name": "လူမှူ့ရေး",
+    "slug": "subject-88e39f173c",
+    "order": 6,
+    "status": "active"
   }
 ]

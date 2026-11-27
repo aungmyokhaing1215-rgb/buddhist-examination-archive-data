@@ -1,116 +1,128 @@
 [
-    { "id": "primary", "name": "မူလတန်း", "slug": "primary", "order": 1, "status": "active" },
-    {
-        "id": "first-level",
-        "name": "ပထမယ်တန်း",
-        "slug": "first-level",
-        "order": 2,
-        "status": "active"
-    },
-    {
-        "id": "first-middle",
-        "name": "ပထမလတ်တန်း",
-        "slug": "first-middle",
-        "order": 3,
-        "status": "active"
-    },
-    {
-        "id": "first-high",
-        "name": "ပထမကြီးတန်း",
-        "slug": "first-high",
-        "order": 4,
-        "status": "active"
-    },
-    {
-        "id": "dhammacariya",
-        "name": "ဓမ္မစရိယတန်း",
-        "slug": "dhammacariya",
-        "order": 5,
-        "status": "active"
-    },
-    { "id": "kg", "name": "KG", "slug": "kg", "order": 6, "status": "active" },
-    {
-        "id": "g1",
-        "name": "G1",
-        "slug": "G1",
-        "order": 7,
-        "status": "active"
-    },
-    {
-        "id": "g2",
-        "name": "G2",
-        "slug": "G2",
-        "order": 8,
-        "status": "active"
-    },
-    {
-        "id": "g3",
-        "name": "G3",
-        "slug": "G3",
-        "order": 9,
-        "status": "active"
-    },
-    {
-        "id": "g4",
-        "name": "G4",
-        "slug": "G4",
-        "order": 10,
-        "status": "active"
-    },
-    {
-        "id": "g5",
-        "name": "G5",
-        "slug": "G5",
-        "order": 11,
-        "status": "active"
-    },
-    {
-        "id": "g6",
-        "name": "G6",
-        "slug": "G6",
-        "order": 12,
-        "status": "active"
-    },
-    {
-        "id": "g7",
-        "name": "G7",
-        "slug": "G7",
-        "order": 13,
-        "status": "active"
-    },
-    {
-        "id": "g8",
-        "name": "G8",
-        "slug": "G8",
-        "order": 14,
-        "status": "active"
-    },
-    {
-        "id": "g9",
-        "name": "G9",
-        "slug": "G9",
-        "order": 15,
-        "status": "active"
-    },
-    {
-        "id": "g10",
-        "name": "G10",
-        "slug": "G10",
-        "order": 16,
-        "status": "active"
-    },
-    {
-        "id": "g11",
-        "name": "G11",
-        "slug": "G11",
-        "order": 17,
-        "status": "active"
-    },
-    {
-        "id": "g12",
-        "name": "G12",
-        "slug": "G12",
-        "order": 18,
-        "status": "active"
-    }
+  {
+    "id": "primary",
+    "name": "မူလတန်း",
+    "slug": "primary",
+    "order": 1,
+    "status": "active"
+  },
+  {
+    "id": "first-level",
+    "name": "ပထမယ်တန်း",
+    "slug": "first-level",
+    "order": 2,
+    "status": "active"
+  },
+  {
+    "id": "first-middle",
+    "name": "ပထမလတ်တန်း",
+    "slug": "first-middle",
+    "order": 3,
+    "status": "active"
+  },
+  {
+    "id": "first-high",
+    "name": "ပထမကြီးတန်း",
+    "slug": "first-high",
+    "order": 4,
+    "status": "active"
+  },
+  {
+    "id": "dhammacariya",
+    "name": "ဓမ္မစရိယတန်း",
+    "slug": "dhammacariya",
+    "order": 5,
+    "status": "active"
+  },
+  {
+    "id": "g1",
+    "name": "G1",
+    "slug": "G1",
+    "order": 6,
+    "status": "inactive"
+  },
+  {
+    "id": "g2",
+    "name": "G2",
+    "slug": "G2",
+    "order": 7,
+    "status": "inactive"
+  },
+  {
+    "id": "kg",
+    "name": "KG",
+    "slug": "kg",
+    "order": 8,
+    "status": "inactive"
+  },
+  {
+    "id": "g3",
+    "name": "G3",
+    "slug": "G3",
+    "order": 9,
+    "status": "inactive"
+  },
+  {
+    "id": "g4",
+    "name": "G4",
+    "slug": "G4",
+    "order": 10,
+    "status": "inactive"
+  },
+  {
+    "id": "g5",
+    "name": "G5",
+    "slug": "G5",
+    "order": 11,
+    "status": "active"
+  },
+  {
+    "id": "g6",
+    "name": "G6",
+    "slug": "G6",
+    "order": 12,
+    "status": "inactive"
+  },
+  {
+    "id": "g7",
+    "name": "G7",
+    "slug": "G7",
+    "order": 13,
+    "status": "inactive"
+  },
+  {
+    "id": "g8",
+    "name": "G8",
+    "slug": "G8",
+    "order": 14,
+    "status": "inactive"
+  },
+  {
+    "id": "g9",
+    "name": "G9",
+    "slug": "G9",
+    "order": 15,
+    "status": "active"
+  },
+  {
+    "id": "g10",
+    "name": "G10",
+    "slug": "G10",
+    "order": 16,
+    "status": "active"
+  },
+  {
+    "id": "g11",
+    "name": "G11",
+    "slug": "G11",
+    "order": 17,
+    "status": "active"
+  },
+  {
+    "id": "g12",
+    "name": "G12",
+    "slug": "G12",
+    "order": 18,
+    "status": "active"
+  }
 ]

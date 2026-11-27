@@ -128,6 +128,14 @@ export const getExam = async (params) => {
   if (exam.status !== 'published') throw new Error('Examination not found')
   return exam
 }
+export const getPublicLessons = async (params = {}) => {
+  try { return (await api.get('/public/lesson', { params })).data }
+  catch { const lessons = await getStaticJson('/data/lessons.json'); return { lessons: lessons.filter((item) => (!params.classSlug || item.classSlug === params.classSlug) && (!params.subjectSlug || item.subjectSlug === params.subjectSlug)) } }
+}
+export const getPublicLesson = async (params) => {
+  try { return (await api.get('/public/lesson', { params })).data }
+  catch { return getStaticJson(`/data/lessons/${encodeURIComponent(params.classSlug)}/${encodeURIComponent(params.subjectSlug)}/${encodeURIComponent(params.lessonSlug)}.json`) }
+}
 export const adminLogin = async (username, password) => { const { data } = await api.post('/admin/login', { username, password }); csrfToken = data.csrfToken || ''; return data }
 export const getSession = async () => { const { data } = await api.get('/admin/session'); csrfToken = data.csrfToken || ''; return data }
 export const adminLogout = async () => { const result = await api.post('/admin/logout'); csrfToken = ''; return result.data }
@@ -143,4 +151,9 @@ export const deleteExam = async (payload) => (await api.delete('/admin/exam', { 
 export const importCatalog = async (catalog) => (await api.post('/admin/import', catalog)).data
 export const validateArchive = async (backup) => (await api.post('/admin/validate', backup)).data
 export const exportArchive = async () => (await api.get('/admin/export')).data
+export const getAdminLessons = async () => (await api.get('/admin/lesson', { params: { list: 1 } })).data
+export const getAdminLesson = async (params) => (await api.get('/admin/lesson', { params })).data
+export const saveLessonDraft = async (lesson) => (await api.put('/admin/lesson', lesson)).data
+export const publishLesson = async (lesson) => (await api.post('/admin/lesson', lesson)).data
+export const deleteLesson = async (lesson) => (await api.delete('/admin/lesson', { data: lesson })).data
 export default api

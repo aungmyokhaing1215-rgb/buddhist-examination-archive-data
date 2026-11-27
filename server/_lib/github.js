@@ -22,8 +22,8 @@ function storagePath(relative, root) {
   const parts = relative.split('/')
   if (parts.some((part) => !part || part === '.' || part === '..' || !/^[A-Za-z0-9_.-]+$/.test(part)) || !relative.endsWith('.json')) throw Error('Invalid JSON storage path')
   const allowed = selectedRoot === ''
-    ? /^drafts\/[a-z0-9]+(?:-[a-z0-9]+)*\/20(?:0[0-9]|1[0-9]|2[0-6])\/[a-z0-9]+(?:-[a-z0-9]+)*\.json$/
-    : /^(?:classes|subjects|index)\.json$|^exams\/[a-z0-9]+(?:-[a-z0-9]+)*\/20(?:0[0-9]|1[0-9]|2[0-6])\/[a-z0-9]+(?:-[a-z0-9]+)*\.json$/
+    ? /^drafts\/(?:[a-z0-9]+(?:-[a-z0-9]+)*\/20(?:0[0-9]|1[0-9]|2[0-6])\/[a-z0-9]+(?:-[a-z0-9]+)*|lessons\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*)\.json$/
+    : /^(?:classes|subjects|index|lessons)\.json$|^exams\/[a-z0-9]+(?:-[a-z0-9]+)*\/20(?:0[0-9]|1[0-9]|2[0-6])\/[a-z0-9]+(?:-[a-z0-9]+)*\.json$|^lessons\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*\.json$/
   if (!allowed.test(relative)) throw Error('Invalid JSON storage path')
   return `${selectedRoot ? `${selectedRoot}/` : ''}${relative}`
 }
@@ -120,7 +120,7 @@ export async function deleteJson(relative, sha, message = 'Remove JSON archive f
 export async function treeFiles(folder = 'exams', root) {
   const c = config()
   const selectedRoot = root === undefined ? c.path : root
-  if (!['exams', 'drafts'].includes(folder) || (selectedRoot !== '' && selectedRoot !== c.path)) throw Error('Invalid JSON storage folder')
+  if (!['exams', 'lessons', 'drafts'].includes(folder) || (selectedRoot !== '' && selectedRoot !== c.path)) throw Error('Invalid JSON storage folder')
   const head = await api(`git/ref/heads/${encodeURIComponent(c.branch)}`)
   const commit = await api(`git/commits/${head.object.sha}`)
   const tree = await api(`git/trees/${commit.tree.sha}?recursive=1`)

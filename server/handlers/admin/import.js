@@ -1,10 +1,57 @@
-import {isAdmin,requireCsrf} from '../../_lib/auth.js'
-import {readJson,writeJson,deleteJson,treeFiles} from '../../_lib/github.js'
-import {readSource,calculateAndValidateExam,toIndexEntry} from '../../_lib/data.js'
-import {send,method,body,fail} from '../../_lib/http.js'
+import { isAdmin, requireCsrf } from '../../_lib/auth.js'
+import { readJson, writeJson, deleteJson, treeFiles } from '../../_lib/github.js'
+import { readSource, calculateAndValidateExam, toIndexEntry } from '../../_lib/data.js'
+import { validateBackup } from './validate.js'
+import { send, method, body, fail } from '../../_lib/http.js'
 
-const classSlugs=['primary','first-level','first-middle','first-high','dhammacariya']
-function lookup(path,prefix,classes,subjects){const re=new RegExp(`^${prefix}/([^/]+)/(20\\d\\d)/([a-z0-9-]+)\\.json$`),match=path.match(re);if(!match)throw Error('Invalid examination JSON path');const[,slug,year,subjectSlug]=match,cls=classes.find(c=>c.slug===slug),subject=subjects.find(s=>s.classId===cls?.id&&s.slug===subjectSlug);if(!cls||!subject)throw Error(`Unknown class or subject in ${path}`);return{cls,subject,year}}
-function validateCatalog(input){if(!Array.isArray(input.classes)||!Array.isArray(input.subjects)||!input.exams||typeof input.exams!=='object')throw Error('Backup must contain classes, subjects, and exams JSON');const ids=input.classes.map(x=>x.id),slugs=input.classes.map(x=>x.slug);if(classSlugs.some(slug=>!ids.includes(slug)||!slugs.includes(slug))||new Set(ids).size!==ids.length||new Set(slugs).size!==slugs.length||input.classes.some(c=>c.id!==c.slug||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(c.slug)||!c.name||!Number.isInteger(c.order)||!['active','inactive'].includes(c.status)))throw Error('Invalid class data');if(new Set(input.subjects.map(s=>s.id)).size!==input.subjects.length||input.subjects.some(s=>!ids.includes(s.classId)||!s.id||!s.name||!s.slug||!Number.isInteger(s.order)||!['active','inactive'].includes(s.status)))throw Error('Invalid subject data')}
-export default async function handler(req,res){if(!method(req,res,['POST']))return;if(!await isAdmin(req))return send(res,401,{error:'Authentication required'});if(!await requireCsrf(req))return send(res,403,{error:'CSRF validation failed'});try{const input=body(req);validateCatalog(input);const published=[],drafts=[],index=[],examIds=new Set();for(const[path,raw]of Object.entries(input.exams)){const{cls,subject,year}=lookup(path,'exams',input.classes,input.subjects);if(raw.status!=='published')throw Error('Public examination files must be published');const exam=calculateAndValidateExam(raw,{classId:cls.id,year,subjectId:subject.id,subjectName:subject.name});if(examIds.has(exam.id))throw Error('Examination IDs must be unique');examIds.add(exam.id);exam.status='published';published.push({path,exam});index.push(toIndexEntry(exam,cls.name,path))}for(const[path,raw]of Object.entries(input.drafts||{})){const{cls,subject,year}=lookup(path,'drafts',input.classes,input.subjects),exam=calculateAndValidateExam({...raw,status:'draft'},{classId:cls.id,year,subjectId:subject.id,subjectName:subject.name});if(examIds.has(exam.id))throw Error('Examination IDs must be unique');examIds.add(exam.id);exam.status='draft';drafts.push({path,exam})}
-const oldClasses=await readSource('classes'),oldSubjects=await readSource('subjects'),oldIndex=await readSource('index');await writeJson('classes.json',input.classes,'Restore archive classes',oldClasses.sha);await writeJson('subjects.json',input.subjects,'Restore archive subjects',oldSubjects.sha);const included=new Set();for(const{path,exam}of published){const old=await readJson(path);await writeJson(path,exam,`Restore examination ${exam.id}`,old.sha);included.add(path)}for(const{path,exam}of drafts){const old=await readJson(path,'');await writeJson(path,exam,`Restore draft ${exam.id}`,old.sha,'');included.add(path)}for(const path of await treeFiles())if(!included.has(path)){const old=await readJson(path);if(old.sha)await deleteJson(path,old.sha)}for(const path of await treeFiles('drafts',''))if(!included.has(path)){const old=await readJson(path,'');if(old.sha)await deleteJson(path,old.sha,'Remove draft absent from backup','')}await writeJson('index.json',index,'Regenerate search index after JSON restore',oldIndex.sha);send(res,200,{ok:true,examinations:included.size,indexed:index.length})}catch(e){if(e.status===409)return send(res,409,{error:'Archive changed during restore. Retry with a fresh backup.'});if(e.message?.includes('must')||e.message?.includes('required')||e.message?.includes('unique')||e.message?.includes('Unsupported')||e.message?.includes('marks')||e.message?.includes('reference')||e.message?.includes('Question')||e.message?.includes('At least')||e.message?.includes('Invalid examination JSON path')||e.message?.includes('Unknown class')||e.message?.includes('Invalid class')||e.message?.includes('Invalid subject')||e.message?.includes('Public examination'))return send(res,400,{error:e.message});fail(res,e)}}
+const lessonMeta = (lesson) => ({ id: lesson.id, slug: lesson.slug, title: lesson.title, classId: lesson.classId, classSlug: lesson.classSlug, className: lesson.className, subjectId: lesson.subjectId, subjectSlug: lesson.subjectSlug, subjectName: lesson.subjectName, path: `public/data/lessons/${lesson.classSlug}/${lesson.subjectSlug}/${lesson.slug}.json`, updatedAt: lesson.updatedAt })
+export default async function handler(req, res) {
+  if (!method(req, res, ['POST'])) return
+  if (!await isAdmin(req)) return send(res, 401, { error: 'Authentication required' })
+  if (!await requireCsrf(req)) return send(res, 403, { error: 'CSRF validation failed' })
+  try {
+    const input = body(req)
+    validateBackup(input)
+    const published = [], drafts = [], lessons = [], lessonDrafts = [], index = []
+    for (const [path, raw] of Object.entries(input.exams || {})) {
+      const match = path.match(/^exams\/([a-z0-9-]+)\/(20\d\d)\/([a-z0-9-]+)\.json$/)
+      const [, classSlug, year, subjectSlug] = match
+      const cls = input.classes.find((item) => item.slug === classSlug)
+      const subject = input.subjects.find((item) => item.classId === cls.id && item.slug === subjectSlug)
+      const exam = calculateAndValidateExam(raw, { classId: cls.id, year, subjectId: subject.id, subjectName: subject.name })
+      exam.status = 'published'; published.push({ path, exam }); index.push(toIndexEntry(exam, cls.name, path))
+    }
+    for (const [path, raw] of Object.entries(input.drafts || {})) {
+      const match = path.match(/^drafts\/([a-z0-9-]+)\/(20\d\d)\/([a-z0-9-]+)\.json$/)
+      const [, classSlug, year, subjectSlug] = match
+      const cls = input.classes.find((item) => item.slug === classSlug)
+      const subject = input.subjects.find((item) => item.classId === cls.id && item.slug === subjectSlug)
+      drafts.push({ path, exam: calculateAndValidateExam({ ...raw, status: 'draft' }, { classId: cls.id, year, subjectId: subject.id, subjectName: subject.name }) })
+    }
+    for (const [path, lesson] of Object.entries(input.lessons || {})) lessons.push({ path, lesson })
+    for (const [path, lesson] of Object.entries(input.lessonDrafts || {})) lessonDrafts.push({ path, lesson })
+
+    const [oldClasses, oldSubjects, oldIndex, oldLessonIndex] = await Promise.all([readSource('classes'), readSource('subjects'), readSource('index'), readJson('lessons.json')])
+    await writeJson('classes.json', input.classes, 'Restore archive classes', oldClasses.sha)
+    await writeJson('subjects.json', input.subjects, 'Restore archive subjects', oldSubjects.sha)
+    const includedExams = new Set()
+    for (const { path, exam } of published) { const old = await readJson(path); await writeJson(path, exam, `Restore examination ${exam.id}`, old.sha); includedExams.add(path) }
+    for (const { path, exam } of drafts) { const old = await readJson(path, ''); await writeJson(path, exam, `Restore draft ${exam.id}`, old.sha, ''); includedExams.add(path) }
+    for (const path of await treeFiles()) if (!includedExams.has(path)) { const old = await readJson(path); if (old.sha) await deleteJson(path, old.sha) }
+    for (const path of (await treeFiles('drafts', '')).filter((item) => !item.startsWith('drafts/lessons/'))) if (!includedExams.has(path)) { const old = await readJson(path, ''); if (old.sha) await deleteJson(path, old.sha, 'Remove draft absent from backup', '') }
+
+    const includedLessons = new Set()
+    for (const { path, lesson } of lessons) { const old = await readJson(path); await writeJson(path, lesson, `Restore lesson ${lesson.id}`, old.sha); includedLessons.add(path) }
+    for (const { path, lesson } of lessonDrafts) { const old = await readJson(path, ''); await writeJson(path, lesson, `Restore lesson draft ${lesson.id}`, old.sha, ''); includedLessons.add(path) }
+    for (const path of await treeFiles('lessons')) if (!includedLessons.has(path)) { const old = await readJson(path); if (old.sha) await deleteJson(path, old.sha) }
+    for (const path of (await treeFiles('drafts', '')).filter((item) => item.startsWith('drafts/lessons/'))) if (!includedLessons.has(path)) { const old = await readJson(path, ''); if (old.sha) await deleteJson(path, old.sha, 'Remove lesson draft absent from backup', '') }
+    const lessonIndex = lessons.map(({ lesson }) => lessonMeta(lesson)).sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt)))
+    await writeJson('index.json', index, 'Regenerate examination search index after JSON restore', oldIndex.sha)
+    await writeJson('lessons.json', lessonIndex, 'Regenerate public lesson index after JSON restore', oldLessonIndex.sha)
+    return send(res, 200, { ok: true, examinations: includedExams.size, lessons: includedLessons.size, index: index.length })
+  } catch (error) {
+    if (error.status === 409) return send(res, 409, { error: 'Archive changed during restore. Retry with a fresh backup.' })
+    if (error.message?.includes('must') || error.message?.includes('required') || error.message?.includes('unique') || error.message?.includes('Unsupported') || error.message?.includes('marks') || error.message?.includes('reference') || error.message?.includes('Question') || error.message?.includes('At least') || error.message?.includes('Invalid') || error.message?.includes('Unknown') || error.message?.includes('missing') || error.message?.includes('Lesson')) return send(res, 400, { error: error.message })
+    return fail(res, error)
+  }
+}

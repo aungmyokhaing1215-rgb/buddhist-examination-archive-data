@@ -12,8 +12,8 @@ export default function LessonManager({ catalog, onNotice }) {
   const [form, setForm] = useState(() => blank(catalog))
   const [busy, setBusy] = useState(false)
   const [loading, setLoading] = useState(true)
-  const classes = catalog.classes || []
-  const subjects = useMemo(() => catalog.subjects.filter((subject) => subject.classId === form.classId), [catalog.subjects, form.classId])
+  const classes = (catalog.classes || []).filter((item) => item.status === 'active')
+  const subjects = useMemo(() => catalog.subjects.filter((subject) => subject.classId === form.classId && subject.status === 'active'), [catalog.subjects, form.classId])
 
   async function refresh() {
     setLoading(true)

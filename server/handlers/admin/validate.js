@@ -3,12 +3,12 @@ import { calculateAndValidateExam } from '../../_lib/data.js'
 import { send, method, body } from '../../_lib/http.js'
 
 const core = ['primary', 'first-level', 'first-middle', 'first-high', 'dhammacariya']
-const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+const slugPattern = /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/
 function validateLessonMap(map, prefix, classes, subjects, expectedStatus) {
   if (!map || typeof map !== 'object' || Array.isArray(map)) throw Error('Lesson backup data must be an object.')
   let count = 0
   for (const [path, lesson] of Object.entries(map)) {
-    const match = path.match(new RegExp(`^${prefix}/([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)\\.json$`))
+    const match = path.match(new RegExp(`^${prefix}/([A-Za-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)\\.json$`))
     if (!match) throw Error(`Invalid lesson JSON path: ${path}`)
     const [, classSlug, subjectSlug, slug] = match
     const cls = classes.find((item) => item.slug === classSlug)

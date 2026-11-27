@@ -3,11 +3,12 @@ import { readSource } from '../../_lib/data.js'
 import { send, method, fail } from '../../_lib/http.js'
 
 const validSlug = (value) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(String(value || ''))
+const validClassSlug = (value) => /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/.test(String(value || ''))
 export default async function handler(req, res) {
   if (!method(req, res, ['GET'])) return
   try {
     const { classSlug, subjectSlug, lessonSlug } = req.query
-    if (classSlug && !validSlug(classSlug) || subjectSlug && !validSlug(subjectSlug) || lessonSlug && !validSlug(lessonSlug)) return send(res, 400, { error: 'Invalid lesson reference' })
+    if (classSlug && !validClassSlug(classSlug) || subjectSlug && !validSlug(subjectSlug) || lessonSlug && !validSlug(lessonSlug)) return send(res, 400, { error: 'Invalid lesson reference' })
     const [classes, subjects] = await Promise.all([readSource('classes'), readSource('subjects')])
     const cls = classes.data.find((item) => item.slug === classSlug && item.status === 'active')
     const subject = subjects.data.find((item) => item.classId === cls?.id && item.slug === subjectSlug && item.status === 'active')

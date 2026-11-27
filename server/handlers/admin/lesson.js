@@ -4,8 +4,9 @@ import { readSource, slugify } from '../../_lib/data.js'
 import { send, method, body, fail } from '../../_lib/http.js'
 
 const validSlug = (value) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(String(value || ''))
+const validClassSlug = (value) => /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/.test(String(value || ''))
 const paths = (classSlug, subjectSlug, lessonSlug) => {
-  if (![classSlug, subjectSlug, lessonSlug].every(validSlug) || String(lessonSlug).length > 80) throw Error('Invalid lesson path')
+  if (!validClassSlug(classSlug) || !validSlug(subjectSlug) || !validSlug(lessonSlug) || String(lessonSlug).length > 80) throw Error('Invalid lesson path')
   const part = `${classSlug}/${subjectSlug}/${lessonSlug}.json`
   return { published: `lessons/${part}`, draft: `drafts/lessons/${part}` }
 }

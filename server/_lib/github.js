@@ -22,8 +22,8 @@ function storagePath(relative, root) {
   const parts = relative.split('/')
   if (parts.some((part) => !part || part === '.' || part === '..' || !/^[A-Za-z0-9_.-]+$/.test(part)) || !relative.endsWith('.json')) throw Error('Invalid JSON storage path')
   const allowed = selectedRoot === ''
-    ? /^drafts\/(?:[a-z0-9]+(?:-[a-z0-9]+)*\/20(?:0[0-9]|1[0-9]|2[0-6])\/[a-z0-9]+(?:-[a-z0-9]+)*|lessons\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*)\.json$/
-    : /^(?:classes|subjects|index|lessons)\.json$|^exams\/[a-z0-9]+(?:-[a-z0-9]+)*\/20(?:0[0-9]|1[0-9]|2[0-6])\/[a-z0-9]+(?:-[a-z0-9]+)*\.json$|^lessons\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*\.json$/
+    ? /^drafts\/(?:[a-z0-9]+(?:-[a-z0-9]+)*\/20(?:0[0-9]|1[0-9]|2[0-6])\/[a-z0-9]+(?:-[a-z0-9]+)*|lessons\/[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*)\.json$/
+    : /^(?:classes|subjects|index|lessons)\.json$|^exams\/[a-z0-9]+(?:-[a-z0-9]+)*\/20(?:0[0-9]|1[0-9]|2[0-6])\/[a-z0-9]+(?:-[a-z0-9]+)*\.json$|^lessons\/[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*\.json$/
   if (!allowed.test(relative)) throw Error('Invalid JSON storage path')
   return `${selectedRoot ? `${selectedRoot}/` : ''}${relative}`
 }
